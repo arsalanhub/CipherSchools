@@ -3,8 +3,21 @@ const jwtkey="this_is_my_secret_key"
 const Jwt=require("jsonwebtoken");
 const bcrypt=require("bcrypt");
 
-module.exports.UserLogin = (req, res) => {
-  res.json({ msg: "Logged In" });
+module.exports.UserLogin = async (req, res) => {
+  const { email, password } = req.body;
+  let userData = await User.findOne({ email });
+  if(!userData) return res.json({ msg: "User not found" });
+  else
+  {
+    let passwordCheck = await bcrypt.compare(password, userData.password);
+    if(!passwordCheck) return res.json({ msg: "Incorrect Password" });
+    else 
+    {
+        Jwt.sign({ userData }, jwtkey, { expiresIn: "2h" }, (err, token) => {
+            res.send({ user: userData, auth: token, status: true });
+          });   
+    }
+  }
 };
 
 module.exports.UserSignup = async (req, res) => {

@@ -41,3 +41,7 @@ module.exports.UserSignup = async (req, res) => {
     console.log(error);
   }
 };
+
+module.exports.UserDashboard = (req, res) => {
+    res.json({ msg: "User Dashboard" })
+}

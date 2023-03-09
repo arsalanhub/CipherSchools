@@ -4,7 +4,8 @@ const cors=require("cors");
 const mongoose=require("mongoose");
 const { videoUpload } = require("./utils");
 const { UploadVideo } = require("./routes/videoRoute");
-const { UserLogin, UserSignup } = require("./routes/userRoute");
+const { UserLogin, UserSignup, UserDashboard } = require("./routes/userRoute");
+const { isLoggedIn } = require("./middleware/isLoggedIn");
 
 const app=express();
 app.use(cors());
@@ -14,6 +15,7 @@ app.use(express.static("videos"));
 app.use("/uploadVideo", videoUpload.single('video'), UploadVideo);
 app.use("/login", UserLogin);
 app.use("/signup", UserSignup);
+app.use("/dashboard", isLoggedIn, UserDashboard);
 
 mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,

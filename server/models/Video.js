@@ -4,7 +4,7 @@ const CommentsSchema = new mongoose.Schema({
     userId: {
         type: String
     },
-    text: {
+    comments: {
         type: String
     }
 });

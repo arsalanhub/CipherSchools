@@ -14,9 +14,9 @@ module.exports.UploadVideo = async (req, res) => {
 }
 
 module.exports.UpdateVideo = async (req, res) => {
-    const { userId, videoId, likes, text } = req.body;
+    const { userId, videoId, likes, comments } = req.body;
     let videoData = await Video.findById(videoId);
-    let tmpLikes=videoData.likes;
+    let tmpLikes=videoData.likes, tmpComments=videoData.comments;
     if(likes)
     {
         let flag=0;
@@ -31,8 +31,10 @@ module.exports.UpdateVideo = async (req, res) => {
         }
         if(!flag) tmpLikes.push({ userId: userId, likes: true });
     }
+    if(comments) tmpComments.push({ userId: userId, comments: comments });
     let updatedData = await Video.findByIdAndUpdate(videoId, {
-        likes: tmpLikes
+        likes: tmpLikes,
+        comments: tmpComments
     }, { new: true })
     return res.send({ msg: "Video Updated", updatedData })
 }

@@ -1,13 +1,22 @@
 const mongoose=require("mongoose");
 
 const CommentsSchema = new mongoose.Schema({
-    commentedUserId: {
+    userId: {
         type: String
     },
-    commentText: {
+    text: {
         type: String
     }
-})
+});
+
+const LikesSchema = new mongoose.Schema({
+    userId: {
+        type: String
+    },
+    likes: {
+        type: Boolean
+    }
+});
 
 const VideoSchema = new mongoose.Schema({
     userId: {
@@ -17,7 +26,7 @@ const VideoSchema = new mongoose.Schema({
         type: String
     },
     likes: {
-        type: Number
+        type: [LikesSchema]
     },
     comments: {
         type: [CommentsSchema]

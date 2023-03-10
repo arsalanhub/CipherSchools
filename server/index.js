@@ -3,7 +3,7 @@ const express=require("express");
 const cors=require("cors");
 const mongoose=require("mongoose");
 const { videoUpload } = require("./utils");
-const { UploadVideo } = require("./routes/videoRoute");
+const { UploadVideo, UpdateVideo } = require("./routes/videoRoute");
 const { UserLogin, UserSignup, UserDashboard } = require("./routes/userRoute");
 const { isLoggedIn } = require("./middleware/isLoggedIn");
 
@@ -12,7 +12,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("videos"));
 
-app.use("/uploadVideo", videoUpload.single('video'), UploadVideo);
+app.use("/uploadVideo", isLoggedIn, videoUpload.single('video'), UploadVideo);
+app.use("/updateVideo", isLoggedIn, UpdateVideo);
 app.use("/login", UserLogin);
 app.use("/signup", UserSignup);
 app.use("/dashboard", isLoggedIn, UserDashboard);

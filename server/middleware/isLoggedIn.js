@@ -3,7 +3,7 @@ const jwtkey = "this_is_my_secret_key";
 
 module.exports.isLoggedIn = (req, res, next) => {
   let token = req.headers["authorization"];
-  if (token.split(" ")[0] === "Bearer") token = token.split(" ")[1];
+  if (token && token.split(" ")[0] === "Bearer") token = token.split(" ")[1];
   if (token) {
     Jwt.verify(token, jwtkey, (err, valid) => {
       if (err) {

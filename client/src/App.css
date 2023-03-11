@@ -43,3 +43,34 @@
   background-color: coral;
   padding: 1rem;
 }
+
+.cardTop {
+  display: flex;
+  gap: 0.5rem;
+  background-color: white;
+  border-radius: 1.5rem;
+}
+
+.videoCommentsWrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.commentsSection {
+  background-color: white;
+  margin-top: 0.25rem;
+  width: 70%;
+  border-radius: 1.5rem;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.commentsSectionBottomWrapper {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 96%;
+  background-color: white;
+  border-radius: 1.5rem;
+  margin-bottom: 1px;
+}

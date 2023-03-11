@@ -27,7 +27,7 @@ export default function Dashboard() {
     }, [])
   return (
     <>
-      <UploadVideo />
+      <UploadVideo setVideoData={setVideoData} />
       <div>Welcome {userData.user && userData.user.name} <button onClick={() => logoutHandler()}>Logout</button></div>
       {videoData && videoData.length && videoData.map((data, idx) => {
         console.log(data.Url)

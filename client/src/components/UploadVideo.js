@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-export default function UploadVideo() {
+export default function UploadVideo({ setVideoData }) {
   const changeHandler = async (file) => {
     let userData=JSON.parse(localStorage.getItem("userData"));
     let userId=userData.user._id;
@@ -9,12 +9,13 @@ export default function UploadVideo() {
     var formData = new FormData();
     formData.append("video", file);
     formData.append("userId", userId);
-    let data = await axios.post("http://localhost:5000/uploadVideo", formData, {
+    let { data } = await axios.post("http://localhost:5000/uploadVideo", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         "Authorization": token
       },
     });
+    setVideoData(data.data);
     console.log(data);
   };
   return (

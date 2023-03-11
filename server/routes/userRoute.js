@@ -2,6 +2,7 @@ const User = require("../models/User");
 const jwtkey="this_is_my_secret_key"
 const Jwt=require("jsonwebtoken");
 const bcrypt=require("bcrypt");
+const Video = require("../models/Video");
 
 module.exports.UserLogin = async (req, res) => {
   const { email, password } = req.body;
@@ -43,6 +44,7 @@ module.exports.UserSignup = async (req, res) => {
   }
 };
 
-module.exports.UserDashboard = (req, res) => {
-    res.json({ msg: "User Dashboard" })
+module.exports.UserDashboard = async (req, res) => {
+    let videoData=await Video.find({});
+    res.json({ msg: "User Dashboard", data: videoData })
 }

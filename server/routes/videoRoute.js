@@ -3,14 +3,14 @@ const Video=require("../models/Video")
 
 module.exports.UploadVideo = async (req, res) => {
     const userId = req.body.userId;
-    const Url = __dirname+"\\"+req.file.path;
+    const Url = process.env.SERVER_URL+req.file.path.split("//")[1];
 
     await Video.create({
         userId: userId,
         Url: Url
     })
-    let userData = await Video.find({ userId });
-    res.json({ "msg": "File Uploaded", user: userData })
+    let videoData = await Video.find({  });
+    res.json({ "msg": "File Uploaded", data: videoData })
 }
 
 module.exports.UpdateVideo = async (req, res) => {

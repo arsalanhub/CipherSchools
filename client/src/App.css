@@ -39,5 +39,7 @@
 
 .videoWrapper {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  background-color: coral;
+  padding: 1rem;
 }

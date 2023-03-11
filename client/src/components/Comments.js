@@ -1,10 +1,27 @@
 import React, { useEffect, useState } from "react";
 import Avatar from '@mui/material/Avatar';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import axios from "axios";
 
-export default function Comments({ commentData, getUserName, likeData }) {
+export default function Comments({ commentData, getUserName, likeData, videoId, setVideoData }) {
   const [countLikes, setCountLikes]=useState(0);
   const [likeColor, setLikeColor]=useState(false);
+
+  const likesHandler = async () => {
+    let userData=JSON.parse(localStorage.getItem("userData"));
+    let userId=userData.user._id;
+    let token=userData.auth;
+    let { data } = await axios.post("http://localhost:5000/updateVideo", {
+        userId: userId,
+        videoId: videoId,
+        likes: true,
+    }, {
+        headers: {
+            "Authorization": token
+        },
+    });
+    setVideoData(data.data);
+  }
 
   useEffect(() => {
     let userId=JSON.parse(localStorage.getItem("userData")).user._id;
@@ -35,11 +52,11 @@ export default function Comments({ commentData, getUserName, likeData }) {
           );
         })}
         <div className="commentsSectionBottomWrapper">
-            <FavoriteIcon style={{ cursor: "pointer", color: likeColor ? "red" : "gray" }} />
+            <FavoriteIcon style={{ cursor: "pointer", color: likeColor ? "red" : "gray" }} onClick={()=>likesHandler()} />
             <div>{countLikes} Likes</div>
             <div style={{ display: "flex", gap: "0.25rem", marginLeft: "1rem", width: "80%" }}>
                 <input type="text" placeholder="Type Comment Here..." style={{ width: "70%" }} />
-                <button>Add Comment</button>
+                <button style={{ cursor: "pointer" }}>Add Comment</button>
             </div>
         </div>
     </>

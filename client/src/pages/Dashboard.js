@@ -57,7 +57,7 @@ export default function Dashboard() {
                 <div className='videoCommentsWrapper'>
                     <video src={data.Url} key={data._id} height="350" width="600" controls style={{ borderRadius: "1.5rem" }}></video>
                     <div className='commentsSection'>
-                        <Comments commentData={data.comments} getUserName={getUserName} likeData={data.likes} />
+                        <Comments commentData={data.comments} getUserName={getUserName} likeData={data.likes} videoId={data._id} setVideoData={setVideoData}/>
                     </div>
                 </div>
             </div>

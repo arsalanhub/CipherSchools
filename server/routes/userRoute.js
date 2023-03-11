@@ -22,13 +22,14 @@ module.exports.UserLogin = async (req, res) => {
 
 module.exports.UserSignup = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, name } = req.body;
     let user = await User.findOne({ email });
     if (user)
       res.status(200).send({ msg: "User Already Exists", status: false });
     else {
       const hashedPassword=await bcrypt.hash(password, 10);
       let userData = await User.create({
+        name: name,
         email: email,
         password: hashedPassword
       })

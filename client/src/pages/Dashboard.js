@@ -50,6 +50,7 @@ export default function Dashboard() {
           paddingTop: "1rem",
           paddingBottom: "1rem",
           paddingLeft: "1rem",
+          border: "1px solid"
         }}
       >
         Welcome {userData.user && userData.user.name}{" "}
@@ -71,8 +72,7 @@ export default function Dashboard() {
                 <video
                   src={data.Url}
                   key={data._id}
-                  height="350"
-                  width="600"
+                  className="video"
                   controls
                   style={{ borderRadius: "1.5rem" }}
                 ></video>

@@ -49,6 +49,8 @@
   gap: 0.5rem;
   background-color: white;
   border-radius: 1.5rem;
+  margin-bottom: 4px;
+  border: 1px solid;
 }
 
 .videoCommentsWrapper {
@@ -63,6 +65,7 @@
   border-radius: 1.5rem;
   padding: 0.5rem;
   position: relative;
+  border: 1px solid;
 }
 
 .commentsSectionBottomWrapper {
@@ -77,6 +80,7 @@
 
 .allCommentsWrapper {
   max-height: 16.5rem;
+  height: 16.5rem;
   overflow: auto;
 }
 
@@ -94,4 +98,23 @@
 
 .allCommentsWrapper::-webkit-scrollbar-thumb:hover {
   background: gray; 
+}
+
+.video {
+  height: 350px;
+  width: 600px;
+  border: 1px solid;
+}
+
+@media only screen and (max-width: 1149px) {
+  .videoCommentsWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .video {
+    width: 100%;
+  }
+  .commentsSection {
+    width: 99%;
+  }
 }

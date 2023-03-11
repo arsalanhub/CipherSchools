@@ -106,6 +106,32 @@
   border: 1px solid;
 }
 
+.loginSignupWrapper {
+  background-color: coral;
+  border: 1px solid;
+  border-radius: 1.5rem;
+  padding-left: 5rem;
+  padding-top: 5rem;
+  margin-top: 5rem;
+  padding-bottom: 5rem;
+  width: 50%;
+  margin-left: 5rem;
+}
+
+.description {
+  background-color: lightgreen;
+  border: 1px solid;
+  border-radius: 1.5rem;
+  padding-left: 5rem;
+  padding-right: 3rem;
+  padding-top: 0.5rem;
+  width: 47%;
+  margin-left: 5rem;
+  margin-top: 1rem;
+  border-bottom: 1px sol;
+  padding-bottom: 1rem;
+}
+
 @media only screen and (max-width: 1149px) {
   .videoCommentsWrapper {
     display: flex;

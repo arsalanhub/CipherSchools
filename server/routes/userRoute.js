@@ -48,3 +48,8 @@ module.exports.UserDashboard = async (req, res) => {
     let videoData=await Video.find({});
     res.json({ msg: "User Dashboard", data: videoData })
 }
+
+module.exports.AllUsers = async (req, res) => {
+  let data=await User.find({});
+  res.json({ data: data });
+}

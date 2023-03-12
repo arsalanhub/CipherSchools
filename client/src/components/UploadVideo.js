@@ -10,7 +10,7 @@ export default function UploadVideo({ setVideoData }) {
     formData.append("video", file);
     formData.append("userId", userId);
     let { data } = await axios.post(
-      "http://localhost:5000/uploadVideo",
+      `${process.env.REACT_APP_SERVER_URL}/uploadVideo`,
       formData,
       {
         headers: {

@@ -16,13 +16,13 @@ export default function LoginSignUpPage() {
 
   const clickHandler = async () => {
     if (isLogInPage) {
-      let data = await axios.post("http://localhost:5000/login", {
+      let data = await axios.post(`${process.env.REACT_APP_SERVER_URL}/login`, {
         email: email,
         password: password,
       });
       localStorage.setItem("userData", JSON.stringify(data.data));
     } else {
-      let data = await axios.post("http://localhost:5000/signup", {
+      let data = await axios.post(`${process.env.REACT_APP_SERVER_URL}/signup`, {
         name: name,
         email: email,
         password: password,

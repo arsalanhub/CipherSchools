@@ -19,7 +19,7 @@ export default function Comments({
     let userId = userData.user._id;
     let token = userData.auth;
     let { data } = await axios.post(
-      "http://localhost:5000/updateVideo",
+      `${process.env.REACT_APP_SERVER_URL}/updateVideo`,
       {
         userId: userId,
         videoId: videoId,
@@ -39,7 +39,7 @@ export default function Comments({
     let userId = userData.user._id;
     let token = userData.auth;
     let { data } = await axios.post(
-      "http://localhost:5000/updateVideo",
+      `${process.env.REACT_APP_SERVER_URL}/updateVideo`,
       {
         userId: userId,
         videoId: videoId,

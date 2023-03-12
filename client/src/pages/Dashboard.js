@@ -21,14 +21,14 @@ export default function Dashboard() {
     let userData = JSON.parse(localStorage.getItem("userData"));
     setUserData(userData);
     let token = userData.auth;
-    let { data } = await axios.get("http://localhost:5000/dashboard", {
+    let { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/dashboard`, {
       headers: {
         Authorization: token,
       },
     });
     setVideoData(data.data);
 
-    let allUsers = await axios.get("http://localhost:5000/allusers", {
+    let allUsers = await axios.get(`${process.env.REACT_APP_SERVER_URL}/allusers`, {
       headers: {
         Authorization: token,
       },
